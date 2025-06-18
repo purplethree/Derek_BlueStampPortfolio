@@ -78,7 +78,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
-| Power Bank |  | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
+| Power Bank |  | $Price | <a href="https://www.walmart.com/ip/INIU-10000mAh-Power-Bank-Slimmest-15W-Portable-Charger-Compatible-with-iPhone-Samsung-High-Speed-Charging-Battery-Pack-USB-C-Cables-Black/3506821403"> Link </a> |
 | Respberry Pi 4  | What the item is used for | $55.00 | <a href="https://www.canakit.com/raspberry-pi-4-4gb.html"> Link </a> |
 | Earbuds | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 | Raspberry Pi camera module | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
