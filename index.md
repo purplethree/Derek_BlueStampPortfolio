@@ -34,8 +34,7 @@ For your second milestone, explain what you've worked on since your previous mil
 - Technical details of what you've accomplished and how they contribute to the final goal
 - What has been surprising about the project so far
 - Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone 
--->
+- What needs to be completed before your final milestone --->
 
 # First Milestone
 
