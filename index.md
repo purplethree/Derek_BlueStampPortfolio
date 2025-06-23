@@ -36,6 +36,7 @@ For your second milestone, explain what you've worked on since your previous mil
 - Previous challenges you faced that you overcame
 - What needs to be completed before your final milestone 
 -->
+
 # First Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
@@ -48,6 +49,7 @@ For your first milestone, describe what your project is and how you plan to buil
 - Challenges you're facing and solving in your future milestones
 - What your plan is to complete your project
 I am currently working on the smart glasses. I plan on building it by getting Tensorflow on the Raspberry Pi, and making object recognition work through the camera module. Then I will implement text to speech and make the machine read out what objects the user is looking at through the earbuds. Finally, I will mount the Raspberry Pi onto the the glasses to let the user wear and listen
+
 <!--
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
@@ -68,6 +70,7 @@ void loop() {
 }
 ```
 -->
+
 # Bill of Materials
 
 | **Part** | **Note** | **Price** | **Link** |
