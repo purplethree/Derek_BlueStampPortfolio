@@ -12,7 +12,7 @@ You should comment out all portions of your portfolio that you have not complete
 | Derek Y | Los Gatos High School | Electrical Engineering | Incoming Junior
 
 
-![Headstone Image](DerekY.png)
+![Headstone Image](<img src="DerekY.png" width="50%">) 
   
 <!--# Final Milestone
 
