@@ -115,6 +115,6 @@ Some challenges I faced were soldering and a bug in the console. Soldering was d
 
 ## Schematics/Images
 <img src="schematics-_WNfuLqZO8t.jpg" width="80%">
-<img src="71JXmf0iqKL._AC_SX679_.jpg" width="80%">
+<img src="71JXmf0iqKL._AC_SX679_.jpg" width="60%">
 
 
