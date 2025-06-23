@@ -100,7 +100,7 @@ Some challenges I faced were soldering and a bug in the console. Soldering was d
 
 ## Bill of Materials
 
-| **Part** | **Quantity** |
+| Part | Quantity |
 |:--:|:--:|
 | Buzzer | x1 |
 | Electric Capacitor | x1 |
