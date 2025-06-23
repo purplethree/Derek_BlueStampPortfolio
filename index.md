@@ -38,7 +38,6 @@ For your second milestone, explain what you've worked on since your previous mil
 
 # First Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Oe47YTd77uI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -100,14 +99,16 @@ The Retro Arcade Console is my starter project and has many games ranging from t
 Some challenges I faced were soldering and a bug in the console. Soldering was difficult for me and sometimes I would get a cold joint. The joint would be flaky and not concave. After practicing many joints on the console, I was able to solder with good joints. Another challenge I faced was a bug in the console. When I fully assembled my game console, the button's controls were flipped, so when I would start it would pause, and if I would pause it would start. I thought this was a soldering error, so I unassembled everything to resolder my joints. Even after that, it wasn't fixed and I realized the code was wrong in the board. This would explain why only on some games the pause button would work, but on others it wouldn't do anything. Because I took apart my console many times trying to fix this, it took away a lot of time and was one of my biggest challenges.
 
 ## Bill of Materials
-Buzzer x1  
-Electric Capacitor x1  
-Digitron Display x1  
-Self-Switch x1  
-Button x6  
-PCB x1  
-LED dot matrix module x2  
-Battery Case x1  
+|:--:|:--:|
+| Buzzer | x1 |
+| Electric Capacitor | x1 |
+| Digitron Display | x1 |
+| Self-Switch | x1 |
+| Button | x6 |
+| PCB | x1 |
+| LED dot matrix module | x2 |
+| Battery Case | x1 |
+
 
 
 ## Schematics/Images
