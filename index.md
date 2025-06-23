@@ -8,7 +8,7 @@
 | Derek Y | Los Gatos High School | Electrical Engineering | Incoming Junior
 
 
-<img src="DerekY.png" width="50%">
+<img src="DerekY.png" width="300" height="400">
   
 <!--# Final Milestone
 
@@ -35,12 +35,12 @@ For your second milestone, explain what you've worked on since your previous mil
 - What has been surprising about the project so far
 - Previous challenges you faced that you overcame
 - What needs to be completed before your final milestone 
-
+-->
 # First Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CaCazFBhYKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Oe47YTd77uI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 For your first milestone, describe what your project is and how you plan to build it. You can include:
 - An explanation about the different components of your project and how they will all integrate together
@@ -48,7 +48,7 @@ For your first milestone, describe what your project is and how you plan to buil
 - Challenges you're facing and solving in your future milestones
 - What your plan is to complete your project
 I am currently working on the smart glasses. I plan on building it by getting Tensorflow on the Raspberry Pi, and making object recognition work through the camera module. Then I will implement text to speech and make the machine read out what objects the user is looking at through the earbuds. Finally, I will mount the Raspberry Pi onto the the glasses to let the user wear and listen
-
+<!--
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
