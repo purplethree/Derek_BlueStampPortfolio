@@ -78,12 +78,11 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
-| Power Bank |  | $Price | <a href="https://www.walmart.com/ip/INIU-10000mAh-Power-Bank-Slimmest-15W-Portable-Charger-Compatible-with-iPhone-Samsung-High-Speed-Charging-Battery-Pack-USB-C-Cables-Black/3506821403"> Link </a> |
-| Respberry Pi 4  | What the item is used for | $55.00 | <a href="https://www.canakit.com/raspberry-pi-4-4gb.html"> Link </a> |
-| Earbuds | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-| Raspberry Pi camera module | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
+| Power Bank | Powers the Raspberry Pi | $17.99 | <a href="https://www.walmart.com/ip/INIU-10000mAh-Power-Bank-Slimmest-15W-Portable-Charger-Compatible-with-iPhone-Samsung-High-Speed-Charging-Battery-Pack-USB-C-Cables-Black/3506821403"> Link </a> |
+| Respberry Pi 4 | Runs the camera module and object recognition | $55.00 | <a href="https://www.canakit.com/raspberry-pi-4-4gb.html"> Link </a> |
+| Earbuds | What the item is used for | $14.01 | <a href="https://www.amazon.com/Earbuds-Headphones-Cancelling-Microphone-Smartphones/dp/B0CB7LM12K"> Link </a> |
+| Raspberry Pi Camera Module |  | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 | Glasses | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-|  | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 
 
 # Other Resources/Examples
@@ -97,10 +96,14 @@ To watch the BSE tutorial on how to create a portfolio, click here. -->
 # Retro Arcade Console
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sGJGCwsERHg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-#### Explanation
+#### Summary
 The Retro Arcade Console is my starter project and has many games ranging from tetris to slots. There are 5 games in total. While playing the games on the console, different sound effects play that matches up to the game. I can use 7 buttons-up, down, left, right, pause, start, and on/off-to control the console. My favorite game is space invaders, because I can shoot beams of lasers with cool sound effects. To play tetris, you can use the left and right buttons to control the orientation, and the down button to make the block go down faster. The LED display shows the game and the display board counts the score for each game. To build the Retro Arcade Console, I had to solder many parts to the PCB. 
 
 #### Challenges
 Some challenges I faced were soldering and a bug in the console. Soldering was difficult for me and sometimes I would get a cold joint. The joint would be flaky and not concave. After practicing many joints on the console, I was able to solder with good joints. Another challenge I faced was a bug in the console. When I fully assembled my game console, the button's controls were flipped, so when I would start it would pause, and if I would pause it would start. I thought this was a soldering error, so I unassembled everything to resolder my joints. Even after that, it wasn't fixed and I realized the code was wrong in the board. This would explain why only on some games the pause button would work, but on others it wouldn't do anything. Because I took apart my console many times trying to fix this, it took away a lot of time and was one of my biggest challenges.
+
+# Schematics/Images
+<img src="schematics-_WNfuLqZO8t.jpg" width="100%">
+<img src="_6xs0EiI667.avif" width="100%">
 
 # Bill of Materials
