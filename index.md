@@ -41,13 +41,13 @@ For your second milestone, explain what you've worked on since your previous mil
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Oe47YTd77uI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-#### Components:
+### Components:
 My project is the Smart Glasses and there are many different parts that work together to make the glasses function. The Raspberry Pi and camera module will run the object recognition. The Raspberry Pi will get information from the camera and process it, turning the pictures into text. Then the text will be read through the earbuds which will allow the user to hear it. Finally, this technology will be attached to the glasses, allowing the user to look at an object and get audio feedback.
 
-#### Challenges
+### Challenges
 The most reccurent challenge I have faced is the remote connection not working. Normally, I would run SSH and TigerVNC, and I can directly connect to the Raspberry Pi without needing a HDMI cable. Sometimes, the connection doesn't work and it forces me to use OBS, which is highly inefficient because I need to use a different keyboard and mouse to control the Raspberry Pi. By using TigerVNC and getting the SSH to work, I can directly control the Raspberry Pi from my computer without needing external devices. This challenge can be fixed by power cycling, but it only works sometimes. 
 
-#### Build Plan
+### Build Plan
 First, I set up my Raspberry Pi which was what I did for this milestone. I got the camera working and took a picture with the Raspberry Pi. Next, I have to install Tensorflow and other programs for object recognition. I will make the Raspberry Pi convert the object recognized into text to speech, which will be played through the earbuds connected to the Raspberry Pi. The audio allows the user to recognize the object without needing to see the object. This feature will be especially useful for blind people, who I am building this project for. Lastly, I will attach all the technology to the glasses and power bank to power the Raspberry Pi. This will allow the device to be portable. For my modifications, I want to add voice control. Voice control will allow the user to take a picture when the command is given, and recognize an object when prompted. Also, I can add music to the Smart Glasses.
 
 
@@ -72,7 +72,7 @@ void loop() {
 ```
 -->
 
-# Bill of Materials
+### Bill of Materials
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
@@ -85,20 +85,20 @@ void loop() {
 <!--Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
 Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. -->
 
-# Other Resources
+### Other Resources
 - https://learn.adafruit.com/running-tensorflow-lite-on-the-raspberry-pi-4/tensorflow-2-setup
 
 
 # Retro Arcade Console
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sGJGCwsERHg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-#### Summary
+### Summary
 The Retro Arcade Console is my starter project and has many games ranging from tetris to slots. There are 5 games in total. While playing the games on the console, different sound effects play that matches up to the game. I can use 7 buttons-up, down, left, right, pause, start, and on/off-to control the console. My favorite game is space invaders, because I can shoot beams of lasers with cool sound effects. To play tetris, you can use the left and right buttons to control the orientation, and the down button to make the block go down faster. The LED display shows the game and the display board counts the score for each game. To build the Retro Arcade Console, I had to solder many parts to the PCB. 
 
-#### Challenges
+### Challenges
 Some challenges I faced were soldering and a bug in the console. Soldering was difficult for me and sometimes I would get a cold joint. The joint would be flaky and not concave. After practicing many joints on the console, I was able to solder with good joints. Another challenge I faced was a bug in the console. When I fully assembled my game console, the button's controls were flipped, so when I would start it would pause, and if I would pause it would start. I thought this was a soldering error, so I unassembled everything to resolder my joints. Even after that, it wasn't fixed and I realized the code was wrong in the board. This would explain why only on some games the pause button would work, but on others it wouldn't do anything. Because I took apart my console many times trying to fix this, it took away a lot of time and was one of my biggest challenges.
 
-## Bill of Materials
+### Bill of Materials
 
 | Part | Quantity |
 |:--:|:--:|
@@ -113,7 +113,7 @@ Some challenges I faced were soldering and a bug in the console. Soldering was d
 
 
 
-## Schematics/Images
+### Schematics/Images
 <img src="schematics-_WNfuLqZO8t.jpg" width="80%">
 <img src="71JXmf0iqKL._AC_SX679_.jpg" width="60%">
 
