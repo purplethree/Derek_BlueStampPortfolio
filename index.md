@@ -31,13 +31,15 @@ For your final milestone, explain the outcome of your project. Key details to in
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Summary
+I downloaded Tensorflow and rpi-vision for object recognition. Rpi-vision uses the MobileNet V2 model for object detection, and Tensorflow loads a pretrained model to detect and recognize objects. 
 ### Challenges
+I had a lot of challenges during this step. Tensorflow wasn't installing for the first few days, and the script for running the object recognition script wasn't working the next few days.
 Code not working
 Used different python
 Different tutorials
 
 ### Future steps
-
+Next, I have to get text to speech working. I will have to make Raspberry Pi convert the images it sees into audio feedback. After that works, I will combine the Raspberry Pi, camera module, and glasses together to get the final Smart glasses project. I will use the power bank to make the Raspberry Pi portable with the glasses.
 
 For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
 - Technical details of what you've accomplished and how they contribute to the final goal
