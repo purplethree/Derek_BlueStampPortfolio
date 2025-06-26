@@ -76,7 +76,7 @@ void loop() {
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
-| Power Bank | Powers the Raspberry Pi | $17.99 | <a href="https://www.walmart.com/ip/INIU-10000mAh-Power-Bank-Slimmest-15W-Portable-Charger-Compatible-with-iPhone-Samsung-High-Speed-Charging-Battery-Pack-USB-C-Cables-Black/3506821403"> Link </a> |
+| Power Bank | Powers the Raspberry Pi | $17.99 | <a href="https://www.amazon.com/INIU-High-Speed-Flashlight-Powerbank-Compatible/dp/B07CZDXDG8?th=1"> Link </a> |
 | Respberry Pi 4 | Runs the camera module and object recognition | $55.00 | <a href="https://www.canakit.com/raspberry-pi-4-4gb.html"> Link </a> |
 | Earbuds | Allows user to hear TTS feedback of an object | $14.01 | <a href="https://www.amazon.com/Earbuds-Headphones-Cancelling-Microphone-Smartphones/dp/B0CB7LM12K"> Link </a> |
 | Raspberry Pi Camera Module | Lets the Raspberry Pi see for object recognition | $6.99 | <a href="https://www.arducam.com/arducam-ov5647-standard-raspberry-pi-camera-b0033.html"> Link </a> |
