@@ -28,7 +28,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EJQkGoKmEQU?si=OniNbNEnmy020-WS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Summary
 For this milestone, I downloaded Tensorflow and rpi-vision for object recognition. Rpi-vision uses the MobileNet V2 model for object detection, and Tensorflow loads a pretrained model to detect and recognize objects. By installing these two programs, running a script can utilize both programs to recognize objects. The script will detect an object, and if the confidence level is above 50%, it will output the object in the terminal and on the screen. In the end, this object recognition system will get the objects detected and read it out loud. The Raspberry Pi camera will be attached to the front of the glasses and detect/read the objects in front to the user.
