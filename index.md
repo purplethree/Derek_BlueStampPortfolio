@@ -20,7 +20,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE
+- What you hope to learn in the future after everything you've learned at BSE -->
 
 
 
@@ -31,21 +31,20 @@ For your final milestone, explain the outcome of your project. Key details to in
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Summary
-I downloaded Tensorflow and rpi-vision for object recognition. Rpi-vision uses the MobileNet V2 model for object detection, and Tensorflow loads a pretrained model to detect and recognize objects. 
+For this milestone, I downloaded Tensorflow and rpi-vision for object recognition. Rpi-vision uses the MobileNet V2 model for object detection, and Tensorflow loads a pretrained model to detect and recognize objects. By installing these two programs, running a script can utilize both programs to recognize objects. The script will detect an object, and if the confidence level is above 50%, it will output the object in the terminal and on the screen. In the end, this object recognition system will get the objects detected and read it out loud. The Raspberry Pi camera will be attached to the front of the glasses and detect/read the objects in front to the user.
+
 ### Challenges
-I had a lot of challenges during this step. Tensorflow wasn't installing for the first few days, and the script for running the object recognition script wasn't working the next few days.
-Code not working
-Used different python
-Different tutorials
+I had a lot of challenges during this step including difficulties installing Tensorflow and running the script. At first, the code didn't work because of a virtual environment problem. In the new Raspberry Pi OS, many commands were disabled because of package interference prevention. I had to find another way to install the virtual environment, which was not using the sudo command. After, I had to install Blinka. This didn't work because many commands used a sudo install, which the new Raspberry OS does not allow. I had to do the same thing and not use the sudo command. My next challenge was installing Tensorflow. When I followed the tutorial, there would always be a problem importing libcamera, even though I already had it installed. Because of this problem, I tried a different object recognition tutorial, but that also didn't work. I needed to downgrade my python and numpy. When I downgraded my python to 3.9 rather than 3.11, and my numpy to 1.26.4 rather than 2.0.2. The terminal commands started working, but the script only worked for USB cameras, not a picamera. I then moved onto a different tutorial that used a pretrain google model, but that didn't work either. I kept trying different tutorials on the internet and none of them worked for me. I went back to the original tutorial and tried again on python versions 3.10 and 3.9. Libcamera still wasn't detected and I felt like I was stuck. Then I decided to put my python back into version 3.11, and changed the configuration. It turns out that the use system wide packages was set to false, which made the virtual environment not detect the libcamera that was installed on the home directory. After turning this on, the object recognition window popped up and I could start detecting various objects.
+
 
 ### Future steps
-Next, I have to get text to speech working. I will have to make Raspberry Pi convert the images it sees into audio feedback. After that works, I will combine the Raspberry Pi, camera module, and glasses together to get the final Smart glasses project. I will use the power bank to make the Raspberry Pi portable with the glasses.
+Next, I have to get text to speech working. I will have to make Raspberry Pi convert the images it sees into audio feedback. After that works, I will combine the Raspberry Pi, camera module, and glasses together to get the final Smart glasses project. I will use the power bank to make the Raspberry Pi portable with the glasses. I will attach the camera to the front of the glasses, which would allow object recognition for the object the user is looking at. Then I will be ready to finish my third milestone.
 
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
+<!-- For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
 - Technical details of what you've accomplished and how they contribute to the final goal
 - What has been surprising about the project so far
 - Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone --->
+- What needs to be completed before your final milestone -->
 
 # First Milestone
 
