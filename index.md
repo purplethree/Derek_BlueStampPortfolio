@@ -16,6 +16,8 @@ The Smart Glasses uses object recognition and text to speech which lets the user
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+### Summary
+
 For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
@@ -49,7 +51,10 @@ Next, I have to get text to speech working. I will have to make Raspberry Pi con
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Oe47YTd77uI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### Components:
+### Summary
+For this milestone, I set up the Raspberry Pi. I downloaded Raspberry Pi OS onto the SD card and put it in the Raspberry Pi. Then I attached the heatsinks and the fan to cool the main components running the Pi. Since SSH wasn't working, I used a video capture card, mouse, and keyboard to control the Raspberry Pi. For the software, I installed OpenCV so I can use the Pi camera module. I took a picture to make sure it was working, and I finished setting up my Pi for the next part of my project.
+
+### Components
 My project is the Smart Glasses and there are many different parts that work together to make the glasses function. The Raspberry Pi and camera module will run the object recognition. The Raspberry Pi will get information from the camera and process it, turning the pictures into text. Then the text will be read through the earbuds which will allow the user to hear it. Finally, this technology will be attached to the glasses, allowing the user to look at an object and get audio feedback.
 
 ### Challenges
