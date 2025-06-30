@@ -20,10 +20,13 @@ The Smart Glasses uses object recognition and text to speech which lets the user
 For this milestone, I enabled text to speech within the object recognition system. I simply turned the volume up and the text to speech started working. I used the festival python wrapper which enabled text to speech directly from the object recognition code. Now, when the Pi camera detects an object, the user will hear it through the earbuds. I also assembled the glasses for this milestone. I made it portable by attaching a power bank instead of using a power outlet. I also replaced my short camera flex cable with a long one, so I can hold onto the Raspberry Pi while the camera is attached to the glasses. I then hotglued the camera to the glasses. Since I didn't want to put hot glue directly on the PCB, I build the camera mount without the legs. This made a clear protective box for the camera, which I could put hot glue on and attach to the glasses. After that, I tested my object recognition with the newly assembled glasses, and it worked.
 
 ### Challenges and Triumphs
-
+Installing tensorflow and getting object recognition to work
+Assembling the glasses and getting everything to work in the final product
 ### What I Learned
+How to use terminal and raspberry pi
 
 ### Future Plans
+Learn how to create scripts by myself instead of github repositories
 
 For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
