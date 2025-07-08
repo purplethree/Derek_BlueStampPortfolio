@@ -10,11 +10,11 @@ The Smart Glasses uses object recognition and text to speech which lets the user
 
 <img src="DerekY.png" width="300" height="400">
   
-<!--# Final Milestone
+# Final Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+<!--**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --->
 
 ### Summary
 For this milestone, I enabled text to speech within the object recognition system. I simply turned the volume up and the text to speech started working. I used the festival python wrapper which enabled text to speech directly from the object recognition code. Now, when the Pi camera detects an object, the user will hear it through the earbuds. I also assembled the glasses for this milestone. I made it portable by attaching a power bank instead of using a power outlet. I also replaced my short camera flex cable with a long one, so I can hold onto the Raspberry Pi while the camera is attached to the glasses. I then hotglued the camera to the glasses. Since I didn't want to put hot glue directly on the PCB, I build the camera mount without the legs. This made a clear protective box for the camera, which I could put hot glue on and attach to the glasses. After that, I tested my object recognition with the newly assembled glasses, and it worked. Then, I added color recognition. First, I defined each color through the RGB numbers. For example, if the color was r > 200, g < 80, and b < 80, the script would return red. Then it would read the object, followed by "color is {color_name}". In the bottom right corner, I also made a little rectangle which shows what color the camera was detecting. The color recognition works by making a box in the center of the screen, and finding the median color of each row. Also, I made a highlight filter by excluding all color values greater than 230. After doing all this, the value of the color gets stored and read out loud through text to speech. The color also appears next to the name of the object in the real time video feedback.
@@ -28,12 +28,12 @@ The most rewording thing was assembling the glasses and making my final product.
 ### What I Learned
 I have learned many things in Bluestamp, starting with soldering. I practiced soldering until I had a good joint. A good joint will look concave cone shape. I also learned about bad joints like a cold joint, which is when there wasn't enough heat. I used this skill and made the Retro Arcade Console, and all the buttons worked on the Console which meant my joints were good. Next, I learned how to use a Raspberry Pi. Before this camp, I didn't know what a Raspberry Pi was and what it was used for. Now I know it's a single board computer that can run code and can be connected to various attachments. The attachment I used was the camera, which allowed the Raspberry Pi to see. Then I learned how to run code through the terminal. I learned many commands on the terminal, like creating a virtual environment and downloading github repositories straight onto the Pi with the wget command. I did this with SSH or through a remote control of the Pi. I learned how to use TigerVNC to connect to the Pi from my computer, so I wouldn't need to plug in a keyboard and mouse into the Raspberry Pi everytime I use it. I also learned what Tensorflow is and how to use it for object recognition. Tensorflow powers the object recognition in my Pi, which uses the MobileNetV2 model. It processes each frame and outputs the detected object. Overall, I learned the basics of using a Raspberry Pi and how to use models for object recognition.
 
-### Future Plans
-Learn how to create scripts by myself instead of github repositories
+<!--### Future Plans
+Learn how to create scripts by myself instead of github repositories -->
 
 <img src="IMG_6813.jpg" width="60%">
 
-For your final milestone, explain the outcome of your project. Key details to include are:
+<!--For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
