@@ -31,6 +31,8 @@ I have learned many things in Bluestamp, starting with soldering. I practiced so
 ### Future Plans
 Learn how to create scripts by myself instead of github repositories
 
+<img src="IMG_6813.jpg" width="60%">
+
 For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
