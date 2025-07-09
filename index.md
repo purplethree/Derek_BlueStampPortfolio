@@ -33,7 +33,7 @@ In the future, I hope to learn how to write scripts myself rather than getting p
 Learn how to create scripts by myself instead of github repositories 
 
 <img src="IMG_6813.jpg" width="60%">
-<img src="IMG_6818.jpg" width="60%">
+<img src="IMG_6819.jpg" width="60%">
 
 
 <!--For your final milestone, explain the outcome of your project. Key details to include are:
