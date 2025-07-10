@@ -9,7 +9,18 @@ The Smart Glasses uses object recognition and text to speech which lets the user
 
 
 <img src="DerekY.png" width="300" height="400">
-  
+
+<!--# Modifications
+
+### Summary
+I made a picture taking system where the camera will automatically take a picture if it recognizes an object. This will be stored in a folder, where the user can access it and check the accuracy of the detection. I also set a cooldown where the code checks if it took a picture of a certain object in the past 10 seconds, and does not allow a duplicate photo. This cooldown makes it so the pictures folder where the images are saved will not be spammed with the same picture, which saves storage. 
+
+### Challenges
+Some challenges I had while working on modifications were 
+-->
+
+
+
 # Final Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BSQoRLgTWyA?si=n3A9D1DcvZPADYvk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
 
