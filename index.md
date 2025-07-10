@@ -1,6 +1,6 @@
 # Smart Glasses
 <!-- Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails! -->
-The Smart Glasses uses object recognition and text to speech which lets the user recognize the object without seeing it. The Raspberry Pi and camera module work together to recognize the object using a pretrained models. Then the Raspberry Pi reads the object into earbuds attached to the Raspberry Pi and glasses.
+The Smart Glasses uses object recognition and text to speech which lets the user recognize the object without seeing it. The Raspberry Pi and camera module work together to recognize the object using a pretrained models. Then, the Raspberry Pi reads the object into earbuds attached to the Raspberry Pi and glasses.
 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
