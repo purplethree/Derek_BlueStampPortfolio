@@ -70,6 +70,8 @@ I had a lot of challenges during this step including difficulties installing Ten
 ### Future steps
 Next, I have to get text to speech working. I will have to make Raspberry Pi convert the images it sees into audio feedback. After that works, I will combine the Raspberry Pi, camera module, and glasses together to get the final Smart glasses project. I will use the power bank to make the Raspberry Pi portable with the glasses. I will attach the camera to the front of the glasses, which would allow object recognition for the object the user is looking at. Then I will be ready to finish my third milestone.
 
+<img src="image (1).png" width="60%">
+
 <!-- For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
 - Technical details of what you've accomplished and how they contribute to the final goal
 - What has been surprising about the project so far
