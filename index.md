@@ -289,7 +289,7 @@ if __name__ == "__main__":
 
 ## Bill of Materials
 
-| **Part** | **Note** | **Price** | **Link** |
+| Part | Note | Price | Link |
 |:--:|:--:|:--:|:--:|
 | Power Bank | Powers the Raspberry Pi | $17.99 | <a href="https://www.amazon.com/INIU-High-Speed-Flashlight-Powerbank-Compatible/dp/B07CZDXDG8?th=1"> Link </a> |
 | Respberry Pi 4 | Runs the camera module and object recognition | $55.00 | <a href="https://www.canakit.com/raspberry-pi-4-4gb.html"> Link </a> |
