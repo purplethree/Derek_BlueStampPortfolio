@@ -15,6 +15,11 @@ The Smart Glasses uses object recognition and text to speech which lets the user
 ### Summary
 I made a picture taking system where the camera will automatically take a picture if it recognizes an object. This will be stored in a folder, where the user can access it and check the accuracy of the detection. I also set a cooldown where the code checks if it took a picture of a certain object in the past 10 seconds, and does not allow a duplicate photo. This cooldown makes it so the pictures folder where the images are saved will not be spammed with the same picture, which saves storage. 
 
+Improved accuracy of color recognition
+   Used HSV values rather than RGB values
+   BGR to HSV because OpenCV takes BGR values
+   Works way better and more accurate, 
+   Added color rgb values and name to UI
 ### Challenges
 Some challenges I had while working on modifications were 
 -->
