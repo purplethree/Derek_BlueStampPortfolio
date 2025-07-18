@@ -20,8 +20,18 @@ Improved accuracy of color recognition
    BGR to HSV because OpenCV takes BGR values
    Works way better and more accurate, 
    Added color rgb values and name to UI
+   Added voice assistant with OpenAI api
+   
 ### Challenges
 Some challenges I had while working on modifications were 
+Microphone not working on earbuds
+Had to order new microphone
+Very sensitive and picks up everything
+Unwanted talking would stop the object detection
+Wake word Inaccurate
+Multiple voices at the same time - Tried running object detection and AI at the same time but they interfered with each other
+VNC stopped working again
+
 -->
 
 
