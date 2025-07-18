@@ -303,7 +303,7 @@ if __name__ == "__main__":
 | Raspberry Pi Camera Module | Lets the Raspberry Pi see for object recognition | $6.99 | <a href="https://www.arducam.com/arducam-ov5647-standard-raspberry-pi-camera-b0033.html"> Link </a> |
 | Glasses | Base which the Raspberry Pi and camera is going to be mounted on | $6.99 | <a href="https://www.amazon.com/dp/B0BSF4PL2Q?ref=cm_sw_r_cso_cp_apin_dp_9G1KS2KBDABJZ2GR6485&ref_=cm_sw_r_cso_cp_apin_dp_9G1KS2KBDABJZ2GR6485&social_share=cm_sw_r_cso_cp_apin_dp_9G1KS2KBDABJZ2GR6485&starsLeft=1"> Link </a> |
 | Raspberry Pi Camera Flex Cable | Longer cable that connects the camera to the Raspberry Pi | $2.95 | <a href="https://www.adafruit.com/product/1731"> Link </a> |
-
+| Microphone | Allows the user to talk to the AI assistant | $22.99 | <a href="https://www.amazon.com/Microphone-MAONO-Omnidirectional-Microphone-Recording-Broadcasting/dp/B074BLM973?th=1"> Link </a> |
 
 <!--Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
 Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. -->
