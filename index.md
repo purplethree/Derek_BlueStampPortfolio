@@ -133,20 +133,121 @@ import subprocess
 import sys
 import numpy as np
 import signal
+import cv2
+import openai
+import json
+import queue
+import threading
+import sounddevice as sd
+import difflib
 
-CONFIDENCE_THRESHOLD = 0.5   # at what confidence level do we say we detected a thing
+# Load OpenAI API key from environment variable
+openai.api_key = "KEY"
+
+# Initialize Vosk speech recognition variables
+voice_queue = queue.Queue()
+vosk_model = None
+vosk_recognizer = None
+
+def audio_callback(indata, frames, time, status):
+    if status:
+        print(f"Vosk status: {status}")
+    voice_queue.put(bytes(indata))
+
+# Shared variable for latest command
+voice_cmd = None
+voice_lock = threading.Lock()
+
+# Shared state: whether assistant is listening for a prompt after wake word
+assistant_active = False
+
+def listen_loop():
+    global voice_cmd
+    with sd.RawInputStream(samplerate=16000, blocksize=8000,
+                           dtype='int16', channels=1,
+                           callback=audio_callback):
+        while True:
+            data = voice_queue.get()
+            if vosk_recognizer.AcceptWaveform(data):
+                result = json.loads(vosk_recognizer.Result())
+                text = result.get("text", "").strip()
+                if text:
+                    print(f"Heard: {text}")
+                    with voice_lock:
+                        # Fuzzy match for wake word "glasses"
+                        if difflib.get_close_matches(text.lower(), ["bill"], n=1, cutoff=0.7):
+                            print("Wake word 'bill' detected")
+                            voice_cmd = "wake"
+                        # Special commands and assistant logic
+                        if "take a picture" in text.lower():
+                            voice_cmd = "take_picture"
+                        elif "record" in text.lower():
+                            voice_cmd = "start_recording"
+                        elif "stop recording" in text.lower():
+                            voice_cmd = "stop_recording"
+                        elif assistant_active:
+                            voice_cmd = text
+
+def get_chatgpt_response(prompt):
+    response = openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are an AI voice assistant built into smart glasses. Respond in a friendly tone and limit your answers to 1-2 sentences."},
+            {"role": "user", "content": prompt}
+        ]
+    )
+    return response.choices[0].message.content.strip()
+
+def speak(text):
+    subprocess.call(f'echo "{text}" | festival --tts', shell=True)
+
+CONFIDENCE_THRESHOLD = 0.6   # at what confidence level do we say we detected a thing
 PERSISTANCE_THRESHOLD = 0.25  # what percentage of the time we have to have seen a thing
 
 def dont_quit(signal, frame):
    print('Caught signal: {}'.format(signal))
 signal.signal(signal.SIGHUP, dont_quit)
 
+def get_color_name(r, g, b):
+    hsv = cv2.cvtColor(np.uint8([[[b, g, r]]]), cv2.COLOR_BGR2HSV)[0][0]
+    h, s, v = hsv
+
+    if v < 50:
+        return "black"
+    elif s < 50 and v > 200:
+        return "white"
+    elif s < 50:
+        return "gray"
+    elif h < 10 or h >= 170:
+        return "red"
+    elif 10 <= h < 25:
+        return "orange"
+    elif 25 <= h < 35:
+        return "yellow"
+    elif 35 <= h < 85:
+        return "green"
+    elif 85 <= h < 125:
+        return "cyan"
+    elif 125 <= h < 150:
+        return "blue"
+    elif 150 <= h < 170:
+        return "magenta"
+    else:
+        return "unknown color"
 # App
 from rpi_vision.agent.capturev2 import PiCameraStream
 from rpi_vision.models.mobilenet_v2 import MobileNetV2Base
 
+
+
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
+# Suppress INFO-level logs from mobilenet_v2, tensorflow, and picamera2 modules
+logging.getLogger("rpi_vision.models.mobilenet_v2").setLevel(logging.WARNING)
+logging.getLogger("tensorflow").setLevel(logging.ERROR)
+logging.getLogger("picamera2.picamera2").setLevel(logging.WARNING)
+last_snapshot_time = {}
+SNAPSHOT_COOLDOWN = 10  # seconds
 
 # initialize the display
 pygame.init()
@@ -166,14 +267,23 @@ def parse_args():
     parser.add_argument('--rotation', type=int, choices=[0, 90, 180, 270],
                         dest='rotation', action='store', default=0,
                         help='Rotate everything on the display by this amount')
+
+    parser.add_argument('--voice', action='store_true', help='Enable voice assistant')
     args = parser.parse_args()
     return args
 
 last_seen = [None] * 10
 last_spoken = None
 
+
 def main(args):
-    global last_spoken, capture_manager
+    global last_spoken, capture_manager, voice_cmd, vosk_model, vosk_recognizer
+
+    if args.voice:
+        from vosk import Model, KaldiRecognizer
+        vosk_model = Model("/home/purple/rpi-vision/tests/model")
+        vosk_recognizer = KaldiRecognizer(vosk_model, 16000)
+        threading.Thread(target=listen_loop, daemon=True).start()
 
     capture_manager = PiCameraStream(preview=False)
 
@@ -196,11 +306,10 @@ def main(args):
         pass
     pygame.display.update()
 
-    # Let's figure out the scale size first for non-square images
     scale = max(buffer.get_height() // capture_manager.resolution[1], 1)
     scaled_resolution = tuple([x * scale for x in capture_manager.resolution])
 
-    # use the default font, but scale it
+    
     smallfont = pygame.font.Font(None, 24 * scale)
     medfont = pygame.font.Font(None, 36 * scale)
     bigfont = pygame.font.Font(None, 48 * scale)
@@ -213,6 +322,68 @@ def main(args):
             continue
         buffer.fill((0,0,0))
         frame = capture_manager.read()
+
+        # Handle AI assistant voice commands with state transitions
+        global assistant_active
+        with voice_lock:
+            cmd = voice_cmd
+            voice_cmd = None
+        if args.voice and cmd:
+            if cmd == "wake":
+                assistant_active = True
+                print("Voice assistant activated. Listening for command...")
+                speak("I'm listening.")
+                continue
+            if cmd == "take_picture":
+                timestamp_str = time.strftime("%Y%m%d-%H%M%S")
+                filename = f"voice_capture_{timestamp_str}.jpg"
+                save_dir = "snapshots"
+                os.makedirs(save_dir, exist_ok=True)
+                save_path = os.path.join(save_dir, filename)
+                cv2.imwrite(save_path, cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+                print(f"[Voice snapshot saved]: {save_path}")
+                speak("Picture taken.")
+                continue
+            elif assistant_active:
+                print(f"Voice command: {cmd}")
+                reply = get_chatgpt_response(cmd)
+                print(f"Assistant: {reply}")
+                speak(reply)
+                assistant_active = False
+                continue
+
+        # Skip object detection and color analysis if assistant is active
+        if assistant_active:
+            # Skip object detection while assistant is active
+            continue
+
+        # Always show the center color
+        h, w, _ = frame.shape
+        cx, cy = w // 2, h // 2
+        crop_size = 35  
+        x1, x2 = max(0, cx - crop_size), min(w, cx + crop_size)
+        y1, y2 = max(0, cy - crop_size), min(h, cy + crop_size)
+
+        roi = frame[y1:y2, x1:x2]
+        roi = cv2.cvtColor(roi, cv2.COLOR_RGB2BGR)
+        hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+        lower_skin = np.array([0, 48, 80], dtype=np.uint8)
+        upper_skin = np.array([20, 255, 255], dtype=np.uint8)
+        skin_mask = cv2.inRange(hsv, lower_skin, upper_skin)
+
+        pixels = roi.reshape(-1, 3)
+        non_skin = pixels[skin_mask.reshape(-1) == 0]
+        if non_skin.size == 0:
+            non_skin = pixels  # fallback
+
+        filtered = non_skin[np.all(non_skin < 200, axis=1)]
+        if filtered.size == 0:
+            filtered = non_skin
+
+        average_color = np.mean(filtered, axis=0)
+        b, g, r = average_color.astype(int)
+
+
         # get the raw data frame & swap red & blue channels
         previewframe = np.ascontiguousarray(capture_manager.frame)
         # make it an image
@@ -229,15 +400,22 @@ def main(args):
         # draw it!
         buffer.blit(img, (0, 0), cropped_region)
 
+        # Draw RGB color box and text overlay after video frame
+        color_box = pygame.Surface((50, 50))
+        color_box.fill((r, g, b))  # Note: pygame uses RGB order
+        buffer.blit(color_box, (10, buffer.get_height() - 60))
+
+        color_name = get_color_name(r, g, b)
+        rgb_text = f"RGB: ({r}, {g}, {b}) - {color_name}"
+        rgb_surface = smallfont.render(rgb_text, True, (255, 255, 255))
+        buffer.blit(rgb_surface, (70, buffer.get_height() - 50))
+
         timestamp = time.monotonic()
         if args.tflite:
             prediction = model.tflite_predict(frame)[0]
         else:
             prediction = model.predict(frame)[0]
-        logging.info(prediction)
         delta = time.monotonic() - timestamp
-        logging.info("%s inference took %d ms, %0.1f FPS" % ("TFLite" if args.tflite else "TF", delta * 1000, 1 / delta))
-        print(last_seen)
 
         # add FPS & temp on top corner of image
         fpstext = "%0.1f FPS" % (1/delta,)
@@ -276,13 +454,87 @@ def main(args):
                 else:
                     detecttextfont = smallfont # well, we'll do our best
                 detecttext_color = (0, 255, 0) if persistant_obj else (255, 255, 255)
-                detecttext_surface = detecttextfont.render(detecttext, True, detecttext_color)
-                detecttext_position = (buffer.get_width()//2,
-                                       buffer.get_height() - detecttextfont.size(detecttext)[1])
-                buffer.blit(detecttext_surface, detecttext_surface.get_rect(center=detecttext_position))
+                
+                if persistant_obj:
+                    now = time.monotonic()
+                    last_time = last_snapshot_time.get(detecttext, 0)
 
+                    if now - last_time > SNAPSHOT_COOLDOWN:
+                        timestamp_str = time.strftime("%Y%m%d-%H%M%S")
+                        filename = f"{detecttext}_{timestamp_str}.jpg"
+                        save_dir = "snapshots"
+                        os.makedirs(save_dir, exist_ok=True)
+                        save_path = os.path.join(save_dir, filename)
+                        cv2.imwrite(save_path, cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+                        print(f"[Snapshot saved]: {save_path}")
+                        last_snapshot_time[detecttext] = now
+                    # else:
+                    #     print(f"[Skipped snapshot] {detecttext} was saved less than {SNAPSHOT_COOLDOWN} seconds ago.")
+
+                    h, w, _ = frame.shape
+                    cx, cy = w // 2, h // 2
+                    crop_size = 35  
+                    x1, x2 = max(0, cx - crop_size), min(w, cx + crop_size)
+                    y1, y2 = max(0, cy - crop_size), min(h, cy + crop_size)
+                    
+                    buffer_h, buffer_w = buffer.get_height(), buffer.get_width()
+                    frame_h, frame_w = frame.shape[:2]
+
+                    scale_x = buffer_w / frame_w
+                    scale_y = buffer_h / frame_h
+
+                    rx1 = int(x1 * scale_x)
+                    ry1 = int(y1 * scale_y)
+                    rw = int((x2 - x1) * scale_x)
+                    rh = int((y2 - y1) * scale_y)
+
+                    pygame.draw.rect(buffer, (255, 255, 255), (rx1, ry1, rw, rh), 2)
+                    
+                    roi = frame[y1:y2, x1:x2]
+
+                    roi = cv2.cvtColor(roi, cv2.COLOR_RGB2BGR)
+                    hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+                    lower_skin = np.array([0, 48, 80], dtype=np.uint8)
+                    upper_skin = np.array([20, 255, 255], dtype=np.uint8)
+                    skin_mask = cv2.inRange(hsv, lower_skin, upper_skin)
+
+                    pixels = roi.reshape(-1, 3)
+                    non_skin = pixels[skin_mask.reshape(-1) == 0]
+                    if non_skin.size == 0:
+                        non_skin = pixels  # fallback
+
+                    filtered = non_skin[np.all(non_skin < 200, axis=1)]
+                    if filtered.size == 0:
+                        filtered = non_skin
+
+# 5) Compute average color
+                    average_color = np.mean(filtered, axis=0)
+                    b, g, r = average_color.astype(int)
+                    
+
+# Use median instead of average
+                    
+                    color_name = get_color_name(r, g, b)
+                    #print(f"Average color (RGB): ({r}, {g}, {b}) - {color_name}")
+
+# Add a rectangle showing detected color in bottom-left corner
+                    color_box = pygame.Surface((50, 50))
+                    color_box.fill((r, g, b))  # Note: pygame uses RGB order
+                    buffer.blit(color_box, (10, buffer.get_height() - 60))
+                if persistant_obj:
+                    color_name = get_color_name(r, g, b)
+                    label_text = f"{detecttext} - {color_name}"
+                else:
+                    label_text = detecttext
+
+                detecttext_surface = detecttextfont.render(label_text, True, detecttext_color)
+                detecttext_position = (buffer.get_width()//2,
+                                        buffer.get_height() - detecttextfont.size(label_text)[1])
+                buffer.blit(detecttext_surface, detecttext_surface.get_rect(center=detecttext_position))
                 if persistant_obj and last_spoken != detecttext:
-                    subprocess.call(f"echo {detecttext} | festival --tts &", shell=True)
+                    color_name = get_color_name(r, g, b)
+                    spoken_text = f"That is a {color_name} {detecttext} "
+                    subprocess.call(f"echo \"{spoken_text}\" | festival --tts &", shell=True)
                     last_spoken = detecttext
                 break
         else:
